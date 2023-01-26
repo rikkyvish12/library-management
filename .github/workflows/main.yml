@@ -24,8 +24,8 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: f1234.myhost.de
-          username: myFtpUserName
-          password: aPasswordWithoutSpacesOrSpecialCharactersLikeQuotes
+          server: ftp.aamraifarmretreats.com
+          username: u776404143.rikkyvish12
+          password: Rikkyvish@1994
           protocol: ftps
           port: 21
