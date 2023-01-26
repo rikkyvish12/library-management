@@ -27,5 +27,5 @@ jobs:
           server: ftp.aamraifarmretreats.com
           username: u776404143.rikkyvish12
           password: Rikkyvish@1994
-          protocol: ftps
+          protocol: ftp
           port: 21
