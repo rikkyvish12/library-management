@@ -38,32 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::post('change-password',[dashboardController::class,'change_password'])->name('change_password');
     Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
-    // author CRUD
-    Route::get('/authors', [AutherController::class, 'index'])->name('authors');
-    Route::get('/authors/create', [AutherController::class, 'create'])->name('authors.create');
-    Route::get('/authors/edit/{auther}', [AutherController::class, 'edit'])->name('authors.edit');
-    Route::post('/authors/update/{id}', [AutherController::class, 'update'])->name('authors.update');
-    Route::post('/authors/delete/{id}', [AutherController::class, 'destroy'])->name('authors.destroy');
-    Route::post('/authors/create', [AutherController::class, 'store'])->name('authors.store');
-
-    // publisher crud
-    Route::get('/publishers', [PublisherController::class, 'index'])->name('publishers');
-    Route::get('/publisher/create', [PublisherController::class, 'create'])->name('publisher.create');
-    Route::get('/publisher/edit/{publisher}', [PublisherController::class, 'edit'])->name('publisher.edit');
-    Route::post('/publisher/update/{id}', [PublisherController::class, 'update'])->name('publisher.update');
-    Route::post('/publisher/delete/{id}', [PublisherController::class, 'destroy'])->name('publisher.destroy');
-    Route::post('/publisher/create', [PublisherController::class, 'store'])->name('publisher.store');
-
-    // Category CRUD
-    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-    Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
-    Route::get('/category/edit/{category}', [CategoryController::class, 'edit'])->name('category.edit');
-    Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
-    Route::post('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-    Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
-
-
-
 
     // books CRUD
     Route::get('/books', [BookController::class, 'index'])->name('books');
@@ -83,21 +57,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/student/show/{id}', [StudentController::class, 'show'])->name('student.show');
 
 
-
-    Route::get('/book_issue', [BookIssueController::class, 'index'])->name('book_issued');
-    Route::get('/book-issue/create', [BookIssueController::class, 'create'])->name('book_issue.create');
-    Route::get('/book-issue/edit/{id}', [BookIssueController::class, 'edit'])->name('book_issue.edit');
-    Route::post('/book-issue/update/{id}', [BookIssueController::class, 'update'])->name('book_issue.update');
-    Route::post('/book-issue/delete/{id}', [BookIssueController::class, 'destroy'])->name('book_issue.destroy');
-    Route::post('/book-issue/create', [BookIssueController::class, 'store'])->name('book_issue.store');
-
-    Route::get('/reports', [ReportsController::class, 'index'])->name('reports');
-    Route::get('/reports/Date-Wise', [ReportsController::class, 'date_wise'])->name('reports.date_wise');
-    Route::post('/reports/Date-Wise', [ReportsController::class, 'generate_date_wise_report'])->name('reports.date_wise_generate');
-    Route::get('/reports/monthly-Wise', [ReportsController::class, 'month_wise'])->name('reports.month_wise');
-    Route::post('/reports/monthly-Wise', [ReportsController::class, 'generate_month_wise_report'])->name('reports.month_wise_generate');
-    Route::get('/reports/not-returned', [ReportsController::class, 'not_returned'])->name('reports.not_returned');
-
-    Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
-    Route::post('/settings', [SettingsController::class, 'update'])->name('settings');
 });

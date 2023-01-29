@@ -15,8 +15,8 @@
                 <span>Student</span>
             </a>
             <ul>
-                <li><a href="login.html">Add Student</a></li>
-                <li><a href="resister.html">All Student</a></li>
+                <li><a href="{{ route('student.create') }}">Add Student</a></li>
+                <li><a href="{{ route('students')}}">All Student</a></li>
             </ul>
         </li>
         <li class="">
