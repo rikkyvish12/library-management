@@ -11,7 +11,7 @@
                             <div class="search_field">
                                 <input type="text" placeholder="Search here...">
                             </div>
-                            <button type="submit"> <img src="asset/img/icon/icon_search.svg" alt="">
+                            <button type="submit"> <img src="/asset/img/icon/icon_search.svg" alt="">
                             </button>
                         </form>
                     </div>
@@ -19,19 +19,21 @@
                 <div class="header_right d-flex justify-content-between align-items-center">
                     <div class="header_notification_warp d-flex align-items-center">
                         <li>
-                            <a href="#"> <img src="asset/img/icon/bell.svg" alt=""> </a>
+                            <a href="#"> <img src="/asset/img/icon/bell.svg" alt=""> </a>
                         </li>
                         <li>
-                            <a href="#"> <img src="asset/img/icon/msg.svg" alt=""> </a>
+                            <a href="#"> <img src="/asset/img/icon/msg.svg" alt=""> </a>
                         </li>
                     </div>
                     <div class="profile_info">
                         <img src="asset/img/client_img.png" alt="#">
                         <div class="profile_info_iner">
-                            <p>Admin </p>
+                            <p>Hi {{ auth()->user()->name }} </p>
                             <div class="profile_info_details">
-
-                                <a href="#">Log Out <i class="ti-shift-left"></i></a>
+                                <a href="#" onclick="document.getElementById('logoutForm').submit()">Log Out</a>
+                                <form method="post" id="logoutForm" action="{{ route('logout') }}">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
                     </div>
