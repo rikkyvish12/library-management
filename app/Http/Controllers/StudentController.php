@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\student;
+use App\Models\Student;
 use App\Http\Requests\StorestudentRequest;
 use App\Http\Requests\UpdatestudentRequest;
+use Hash;
+
 
 class StudentController extends Controller
 {
@@ -16,7 +18,7 @@ class StudentController extends Controller
     public function index()
     {
         return view('student.index', [
-            'students' => student::Paginate(5)
+            'students' => Student::Paginate(5)
         ]);
     }
 
@@ -38,17 +40,18 @@ class StudentController extends Controller
      */
     public function store(StorestudentRequest $request)
     {
-        $student = new student();
+        $student = new Student;
         $student->name = $request->name;
+        $student->age = $request->age;
         $student->address = $request->address;
         $student->gender = $request->gender;
-        $student->age = $request->age;
         $student->phone = $request->phone;
         $student->email = $request->email;
         $student->password = Hash::make($request->passowrd);
         $student->save();
 
-        return redirect()->route('students');
+        return redirect()->back()->with('status', 'Student created Successfully');
+
     }
 
     /**
@@ -59,7 +62,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = student::find($id)->first();
+        $student = Student::find($id)->first();
         return $student;
     }
 
@@ -69,7 +72,7 @@ class StudentController extends Controller
      * @param  \App\Models\student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(student $student)
+    public function edit(Student $student)
     {
         return view('student.edit', [
             'student' => $student
@@ -84,17 +87,16 @@ class StudentController extends Controller
      */
     public function update(UpdatestudentRequest $request, $id)
     {
-        $student = student::find($id);
+        $student = Student::find($id);
         $student->name = $request->name;
+        $student->age = $request->age;
         $student->address = $request->address;
         $student->gender = $request->gender;
-        $student->age = $request->age;
         $student->phone = $request->phone;
         $student->email = $request->email;
         $student->password = Hash::make($request->passowrd);
-        $student->update();
 
-        return redirect()->route('students');
+        return redirect()->back()->with('status', 'Student Updated Successfully');
     }
 
     /**
@@ -105,7 +107,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        student::find($id)->delete();
+        Student::find($id)->delete();
         return redirect()->route('students');
     }
 }

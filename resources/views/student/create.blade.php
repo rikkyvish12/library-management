@@ -1,6 +1,25 @@
 @extends('layouts.app')
 @section('content')
     <div class="main_content_iner ">
+        <div class="row m-1">
+                    <div class="col-md-12">
+                        @if (session('status'))
+                            <div class="alert alert-info" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                    </div>
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
         <div class="container-fluid p-0">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
