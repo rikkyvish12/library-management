@@ -26,7 +26,7 @@
                         </li>
                     </div>
                     <div class="profile_info">
-                        <img src="asset/img/client_img.png" alt="#">
+                        <img src="/asset/img/client_img.png" alt="#">
                         <div class="profile_info_iner">
                             <p>Hi {{ auth()->user()->name }} </p>
                             <div class="profile_info_details">
