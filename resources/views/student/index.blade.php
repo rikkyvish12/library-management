@@ -36,7 +36,7 @@
                                     <td>{{ $student->phone }}</td>
                                     <td>{{ $student->email }}</td>
                                     <td>
-                                        <a href="{{ route('student.edit', $student) }}>" class="btn btn-success">Edit</a>
+                                        <a href="{{ route('student.edit', $student) }}" class="btn btn-warning">Edit</a>
                                     </td>
                                     <td>
                                         <form action="{{ route('student.destroy', $student->id) }}" method="post"
