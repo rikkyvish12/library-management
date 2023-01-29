@@ -27,6 +27,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', function () {
     return view('welcome');
 })->middleware('guest');
+
 Route::post('/', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/Change-password', [LoginController::class, 'changePassword'])->name('change_password');

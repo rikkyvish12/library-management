@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 
-class student extends Model implements JWTSubject
+class student extends Model  //implements JWTSubject
 {
     use HasFactory;
     protected $guarded = [];
