@@ -25,8 +25,8 @@
                 <span>Books</span>
             </a>
             <ul>
-                <li><a href="login.html">Add Book</a></li>
-                <li><a href="resister.html">All Books</a></li>
+                <li><a href="#">Add Book</a></li>
+                <li><a href="#">All Books</a></li>
             </ul>
         </li>
 
