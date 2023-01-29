@@ -38,7 +38,15 @@ class StudentController extends Controller
      */
     public function store(StorestudentRequest $request)
     {
-        student::create($request->validated());
+        $student = new student();
+        $student->name = $request->name;
+        $student->address = $request->address;
+        $student->gender = $request->gender;
+        $student->age = $request->age;
+        $student->phone = $request->phone;
+        $student->email = $request->email;
+        $student->password = Hash::make($request->passowrd);
+        $student->save();
 
         return redirect()->route('students');
     }
@@ -80,11 +88,11 @@ class StudentController extends Controller
         $student->name = $request->name;
         $student->address = $request->address;
         $student->gender = $request->gender;
-        $student->class = $request->class;
         $student->age = $request->age;
         $student->phone = $request->phone;
         $student->email = $request->email;
-        $student->save();
+        $student->password = Hash::make($request->passowrd);
+        $student->update();
 
         return redirect()->route('students');
     }
