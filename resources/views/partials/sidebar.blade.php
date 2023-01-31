@@ -25,8 +25,8 @@
                 <span>Books</span>
             </a>
             <ul>
-                <li><a href="#">Add Book</a></li>
-                <li><a href="#">All Books</a></li>
+                <li class="{{ Request::is('book') || Request::is('book/*') ? 'active' : '' }}"><a
+                    href="{{ url('book') }}">Book</a></li>
             </ul>
         </li>
 

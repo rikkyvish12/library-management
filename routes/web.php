@@ -1,17 +1,10 @@
 <?php
 
 use App\Http\Controllers\auth\LoginController;
-use App\Http\Controllers\AutherController;
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\BookIssueController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\dashboardController;
-use App\Http\Controllers\PublisherController;
-use App\Http\Controllers\ReportsController;
-use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,12 +33,13 @@ Route::middleware('auth')->group(function () {
 
 
     // books CRUD
-    Route::get('/books', [BookController::class, 'index'])->name('books');
-    Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
-    Route::get('/book/edit/{book}', [BookController::class, 'edit'])->name('book.edit');
-    Route::post('/book/update/{id}', [BookController::class, 'update'])->name('book.update');
-    Route::post('/book/delete/{id}', [BookController::class, 'destroy'])->name('book.destroy');
-    Route::post('/book/create', [BookController::class, 'store'])->name('book.store');
+    Route::resource('book',BookController::class);
+    // Route::get('/books', [BookController::class, 'index'])->name('books');
+    // Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
+    // Route::get('/book/edit/{book}', [BookController::class, 'edit'])->name('book.edit');
+    // Route::post('/book/update/{id}', [BookController::class, 'update'])->name('book.update');
+    // Route::post('/book/delete/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+    // Route::post('/book/create', [BookController::class, 'store'])->name('book.store');
 
     // students CRUD
     Route::get('/students', [StudentController::class, 'index'])->name('students');
