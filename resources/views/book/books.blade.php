@@ -31,7 +31,7 @@
                         </div>
                         @php $route = ($book_update) ? 'book/'.$book_update->id : 'book' @endphp
                         @php $method = ($book_update) ? 'PUT' : 'POST' @endphp
-                        <form action="{{ url($route) }}" method="POST">
+                        <form action="{{ url($route) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method($method)
                             <div class="mb-3">
@@ -43,6 +43,11 @@
                                 <label>Author:</label>
                                 <input type="text" class="form-control" id="author" placeholder="Enter author name"
                                     name="author" value="{{ $book_update ? $book_update->author : '' }}">
+                            </div>
+                            <div class="mb-3">
+                                <label>Upload PDF:</label>
+                                <input type="file" class="form-control" id="files" name="files"
+                                 value="{{ $book_update ? $book_update->files : '' }}">
                             </div>
                             <button type="submit" class="btn btn-info">{{ $book_update ? 'Update' : 'Submit' }}</button>
                         </form>
@@ -63,6 +68,7 @@
                                     <tr>
                                         <th>Title</th>
                                         <th>Author</th>
+                                        <th>PDF</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
@@ -73,6 +79,7 @@
                                             <tr>
                                                 <td>{{ $item->title }}</td>
                                                 <td>{{ $item->author }}</td>
+                                                <td>{{ $item->files }}</td>
                                                 <td><a href="{{ url('book/' . $item->id) }}" class="btn btn-warning">Edit</a></td>
                                                 <td>
                                                     <form action="{{ url('book/' . $item->id) }}" method="POST">

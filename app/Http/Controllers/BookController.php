@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -39,12 +40,25 @@ class BookController extends Controller
     {
         $data = $request->validate([
             'title' => 'required',
+            'author' => 'required',
         ]);
+
+        if ($request->file('files')) {
+
+            $file = $request->file('files');
+            $strFile = str_replace(" ", "_", $file->getClientOriginalName());
+
+            $filename = rand(10000,50000).'_'.$strFile;
+            $path = $file->move(
+            base_path().'/public/files/', $filename
+            );
+        }
+
 
         $book = new Book;
         $book->title = $request->title;
         $book->author = $request->author;
-        $book->files = 'path to pdf';
+        $book->files = $filename;
         $book->save();
 
         return redirect()->back()->with('status', 'Books created Successfully');
@@ -86,12 +100,23 @@ class BookController extends Controller
     {
         $data = $request->validate([
             'title' => 'required',
+            'author' => 'required',
         ]);
 
+        if ($request->file('files')) {
+
+            $file = $request->file('files');
+            $strFile = str_replace(" ", "_", $file->getClientOriginalName());
+            $filename = rand(10000,50000
+            ).'_'.$strFile;
+            $path = $file->move(
+            base_path().'/public/files/', $filename
+            );
+        }
         $book = Book::find($id);
         $book->title = $request->title;
         $book->author = $request->author;
-        $book->files = 'path to pdf';
+        $book->files = $filename;
         $book->update();
 
         return redirect()->back()->with('status', 'Book updated Successfully');
