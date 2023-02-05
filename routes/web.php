@@ -27,19 +27,11 @@ Route::post('/Change-password', [LoginController::class, 'changePassword'])->nam
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('change-password',[dashboardController::class,'change_password_view'])->name('change_password_view');
-    Route::post('change-password',[dashboardController::class,'change_password'])->name('change_password');
-    Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+   Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
 
     // books CRUD
     Route::resource('book',BookController::class);
-    // Route::get('/books', [BookController::class, 'index'])->name('books');
-    // Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
-    // Route::get('/book/edit/{book}', [BookController::class, 'edit'])->name('book.edit');
-    // Route::post('/book/update/{id}', [BookController::class, 'update'])->name('book.update');
-    // Route::post('/book/delete/{id}', [BookController::class, 'destroy'])->name('book.destroy');
-    // Route::post('/book/create', [BookController::class, 'store'])->name('book.store');
 
     // students CRUD
     Route::get('/students', [StudentController::class, 'index'])->name('students');

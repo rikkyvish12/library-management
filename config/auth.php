@@ -42,10 +42,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'admin' => [
-            'driver'=>'session',
-            'provider' => 'admins'
-        ],
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'students',
+            'hash' => false,
+          ],
     ],
 
     /*
@@ -71,11 +72,11 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'admins' => [
+        'students' => [
             'driver' => 'eloquent',
-            'model' => App\Models\admin::class
+            'model' => App\Models\Student::class
 
-        ]
+        ],
 
         // 'users' => [
         //     'driver' => 'database',

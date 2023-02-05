@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Illuminate\Http\Request;
 use App\Http\Requests\StorestudentRequest;
 use App\Http\Requests\UpdatestudentRequest;
 use Hash;
+use Config;
+use JWTAuth;
+use Validator;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class StudentController extends Controller
@@ -110,4 +116,38 @@ class StudentController extends Controller
         Student::find($id)->delete();
         return redirect()->route('students');
     }
+
+    public function login(Request $request)
+    {
+        auth()->shouldUse('api');
+        $credentials = $request->only('email', 'password');
+        try {
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'invalid_credentials'], 400);
+            }
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+
+        return response()->json(compact('token'));
+    }
+
+    public function profile()
+    {
+       return response()->json(auth()->user());
+    }
+
+    public function refresh()
+    {
+       return response()->json(auth()->refresh());
+    }
+
+    public function logout()
+    {
+        //auth()->shouldUse('student');
+       //Config::set('jwt.user', Student::class);
+        auth()->logout();
+       return response()->json(['message'=> 'Student Logged out']);
+    }
+
 }
